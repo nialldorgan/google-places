@@ -29,7 +29,7 @@ trait newPlacesApi
         $settings = $this->getSettings();
 
         // Build the API endpoint URL
-        $url = $settings->getNewPlacesApiUrl() . ':searchText';
+        $url = $settings->getApiRoot() . ':searchText';
 
         // Merge the query and additional parameters
         $postData = array_merge(['textQuery' => $query], $params);
@@ -65,7 +65,7 @@ trait newPlacesApi
         $settings = $this->getSettings();
 
         // Build the API endpoint URL
-        $url = $settings->getNewPlacesApiUrl() . ':searchNearby';
+        $url = $settings->getApiRoot() . ':searchNearby';
 
         // Merge the location, radius, and additional parameters
         $postData = array_merge([
@@ -106,7 +106,7 @@ trait newPlacesApi
         $settings = $this->getSettings();
 
         // Build the API endpoint URL
-        $url = $settings->getNewPlacesApiUrl() . '/' . $placeId;
+        $url = $settings->getApiRoot() . '/' . $placeId;
 
 
         $headers = [

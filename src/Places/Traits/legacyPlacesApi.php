@@ -27,7 +27,7 @@ trait legacyPlacesApi
     public function legacyFindPlace($input, $inputType, array $fields = []): mixed
     {
         $settings = $this->getSettings();
-        $apiRoot = $settings->getBaseUrl();
+        $apiRoot = $settings->getApiRoot();
         $url = $apiRoot . '/findplacefromtext/json';
         $params = [
             'input' => htmlspecialchars($input),
@@ -57,7 +57,7 @@ trait legacyPlacesApi
         // Implement the logic for the legacy text search here.
         // Example: return a placeholder response for now.
         $settings = $this->getSettings();
-        $apiRoot = $settings->getBaseUrl();
+        $apiRoot = $settings->getApiRoot();
         $url = $apiRoot . '/textsearch/json';
         $params = ['query' => htmlspecialchars($query), 'key' => $settings->getApiKey()];
         $response = $this->makeApiCall('GET', $url, $params); 
@@ -78,7 +78,7 @@ trait legacyPlacesApi
     {
         // Implement the logic for retrieving a place by its ID.
         $settings = $this->getSettings();
-        $apiRoot = $settings->getBaseUrl();
+        $apiRoot = $settings->getApiRoot();
         $url = $apiRoot . '/details/json';
         $params = ['place_id' => htmlspecialchars($placeId), 'key' => $settings->getApiKey(), 'fields' => $fields];
         $response = $this->makeApiCall('GET', $url, $params);
@@ -99,7 +99,7 @@ trait legacyPlacesApi
     public function legacyNearBySearch($location, $radius, array $optionalParams = []): mixed
     {
         $settings = $this->getSettings();
-        $apiRoot = $settings->getBaseUrl();
+        $apiRoot = $settings->getApiRoot();
         $url = $apiRoot . '/nearbysearch/json';
         $params = array_merge(['location' => htmlspecialchars($location), 'radius' => $radius, 'key' => $settings->getApiKey()], $optionalParams);
         $response = $this->makeApiCall('GET', $url, $params);
