@@ -1,0 +1,25 @@
+{
+    "name": "nialldorgan/google-places",
+    "description": "A wrapper for the Google places API",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.10",
+    "autoload": {
+        "psr-4": {
+            "GooglePlaces\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Niall Dorgan"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "fakerphp/faker": "^1.24"
+    }
+}
