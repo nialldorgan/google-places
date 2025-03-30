@@ -86,7 +86,7 @@ class GooglePlacesApiClient
      * @param array $excludedTypes (Optional) A list of place types to exclude from the search.
      * @return mixed The search results from the Google Places API, or NULL if the version is unsupported.
      */
-    public function nearbySearch(float $latitude, float $longitude, int $radius, ?string $keyword = NULL, ?string $type = NULL, array $includedTypes = [], array $excludedTypes = [], ?string $fieldsMasks='places.rating,places.id,places.displayName,places.formattedAddress'): mixed
+    public function nearbySearch(float $latitude, float $longitude, int $radius, ?string $keyword = NULL, ?string $type = NULL, ?array $inputParams = [], ?array $includedTypes = [], ?array $excludedTypes = [], ?string $fieldsMasks='places.rating,places.id,places.displayName,places.formattedAddress'): mixed
     {
         // Implement the logic to search nearby places using Google Places API
         switch ($this->settings->getversion()) {
@@ -103,6 +103,7 @@ class GooglePlacesApiClient
                 $params = [];
                 $params['includedTypes'] = !empty($includedTypes) ? $includedTypes : null;
                 $params['excludedTypes'] = !empty($excludedTypes) ? $excludedTypes : null;
+                $params = array_merge($params, $inputParams ?? []);
                 return $this->newNearbySearch($latitude, $longitude, $radius, $params, $fieldsMasks);
         }
     }
